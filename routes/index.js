@@ -118,3 +118,30 @@ router.post('/fogo_machine', function(req, res, next) {
 });
 
 module.exports = router;
+
+
+// Native module for HTTP Request
+/*
+
+var http = require('http');
+
+var options = {
+  host: 'example.com',
+  port: '80',
+  path: '/path',
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/x-www-form-urlencoded',
+    'Content-Length': post_data.length
+  }
+};
+
+var req = http.request(options, function(res) {
+  // response is here
+});
+
+// write the request parameters
+req.write('post=data&is=specified&like=this');
+req.end();
+
+*/

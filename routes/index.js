@@ -146,6 +146,7 @@ router.get('/sender/:id/:address', function(req, res, next){
 router.post('/fogo_machine', function(req, res, next) {
   var name = req.body.name;
   var ip = req.body.ip;
+  console.info(typeof(ip) + " - " + typeof(mac));
   var mac = req.body.mac;
   var magic_id = shortid.generate();
   var json = {name: name, ip: ip, mac: mac, magic_id: magic_id, checked: false};

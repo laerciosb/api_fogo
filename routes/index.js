@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var request = require("request");
 var shortid = require('shortid');
 var controls = [];
 var devices = [];
@@ -16,7 +17,7 @@ router.get('/fogo_control/:id', function(req, res, next) {
   var json = {mac : mac, magic_id: magic_id};
   controls.push(json);
   fogo_control.push({id: magic_id});
-  console.log("fogo_control: " + JSON.stringify(fogo_control));
+  // console.log("fogo_control: " + JSON.stringify(fogo_control));
   res.json(json);
 });
 
@@ -44,7 +45,7 @@ router.put('/devices/:id', function(req, res) {
     }
   }
 
-  console.log("fogo_control: " + JSON.stringify(fogo_control));
+  // console.log("fogo_control: " + JSON.stringify(fogo_control));
   res.json(fogo_control);
 });
 
@@ -52,16 +53,26 @@ router.put('/devices/:id', function(req, res) {
   API ACTIONS
 */
 
-router.get('/:id/increase_buffer/:value', function(req, res, next){
+router.get('/increase_buffer/:id', function(req, res, next){
   var id = req.params.id;
-  var value = req.params.value;
-  var json = {value: value};
 
   for (var i in fogo_control) {
     if (fogo_control[i].id == id) {
       for (var j in fogo_control[i].devices){
         //send information to fogo machines.
-
+        //Load the request module
+        request({
+          uri: "http://127.0.0.1:3000/increase_buffer",
+          method: "GET",
+          headers: {
+            'Content-type' : 'application/json'
+          }
+        }, function(error, response, body) {
+          if(error){
+            res.json({response: "error"});
+          }
+        });
+        // console.log("device[" + j + "]: " + JSON.stringify(fogo_control[i].devices[j]));
       }
     }
   }
@@ -69,14 +80,26 @@ router.get('/:id/increase_buffer/:value', function(req, res, next){
   res.json({response: "ok"});
 });
 
-router.get('/:id/run_decoder', function(req, res, next){
+router.get('/run_decoder/:id', function(req, res, next){
   var id = req.params.id;
 
   for (var i in fogo_control) {
     if (fogo_control[i].id == id) {
       for (var j in fogo_control[i].devices){
         //send information to fogo machines.
-
+        //Load the request module
+        request({
+          uri: "http://127.0.0.1:3000/run_decoder",
+          method: "GET",
+          headers: {
+            'Content-type' : 'application/json'
+          }
+        }, function(error, response, body) {
+          if(error){
+            res.json({response: "error"});
+          }
+        });
+        // console.log("device[" + j + "]: " + JSON.stringify(fogo_control[i].devices[j]));
       }
     }
   }
@@ -84,7 +107,7 @@ router.get('/:id/run_decoder', function(req, res, next){
   res.json({response: "ok"});
 });
 
-router.get('/:id/sender/:address', function(req, res, next){
+router.get('/sender/:id/:address', function(req, res, next){
   var id = req.params.id;
   var address = req.params.address;
   var json = {address: address};
@@ -93,7 +116,19 @@ router.get('/:id/sender/:address', function(req, res, next){
     if (fogo_control[i].id == id) {
       for (var j in fogo_control[i].devices){
         //send information to fogo machines.
-
+        //Load the request module
+        request({
+          uri: "http://127.0.0.1:3000/sender",
+          method: "GET",
+          headers: {
+            'Content-type' : 'application/json'
+          }
+        }, function(error, response, body) {
+          if(error){
+            res.json({response: "error"});
+          }
+        });
+        // console.log("device[" + j + "]: " + JSON.stringify(fogo_control[i].devices[j]));
       }
     }
   }
@@ -118,30 +153,3 @@ router.post('/fogo_machine', function(req, res, next) {
 });
 
 module.exports = router;
-
-
-// Native module for HTTP Request
-/*
-
-var http = require('http');
-
-var options = {
-  host: 'example.com',
-  port: '80',
-  path: '/path',
-  method: 'POST',
-  headers: {
-    'Content-Type': 'application/x-www-form-urlencoded',
-    'Content-Length': post_data.length
-  }
-};
-
-var req = http.request(options, function(res) {
-  // response is here
-});
-
-// write the request parameters
-req.write('post=data&is=specified&like=this');
-req.end();
-
-*/

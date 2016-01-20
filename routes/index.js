@@ -23,6 +23,8 @@ router.get('/fogo_control/:id', function(req, res, next) {
 
 /* GET devices list show fogo machines. */
 router.get('/devices', function(req, res) {
+  // var machines = {devices: devices};
+  // res.json(machines);
   res.sendFile('/tests/get_devices.json', {'root': '../api_fogo/public'});
 });
 

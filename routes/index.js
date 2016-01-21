@@ -63,8 +63,9 @@ router.get('/increase_buffer/:id', function(req, res, next){
       for (var j in fogo_control[i].devices){
         //send information to fogo machines.
         //Load the request module
+        var ip = fogo_control[i].devices[j].ip;
         request({
-          uri: "http://127.0.0.1:3000/increase_buffer",
+          uri: "http://" + ip + ":8888/increase_buffer",
           method: "GET",
           headers: {
             'Content-type' : 'application/json'
@@ -90,8 +91,9 @@ router.get('/run_decoder/:id', function(req, res, next){
       for (var j in fogo_control[i].devices){
         //send information to fogo machines.
         //Load the request module
+        var ip = fogo_control[i].devices[j].ip;
         request({
-          uri: "http://127.0.0.1:3000/run_decoder",
+          uri: "http://" + ip + ":8888/run_decoder",
           method: "GET",
           headers: {
             'Content-type' : 'application/json'
@@ -119,8 +121,9 @@ router.get('/sender/:id/:address', function(req, res, next){
       for (var j in fogo_control[i].devices){
         //send information to fogo machines.
         //Load the request module
+        var ip = fogo_control[i].devices[j].ip;
         request({
-          uri: "http://127.0.0.1:3000/sender",
+          uri: "http://" + ip + ":8888/sender",
           method: "GET",
           headers: {
             'Content-type' : 'application/json'

@@ -53,8 +53,6 @@ exports.machines = function(req, res, next) {
   res.json(response);
 };
 
-/* ========================= TO DO ============================ */
-
 exports.show = function(req, res, next) {
   var magic_id = req.params.id;
   var control = false;

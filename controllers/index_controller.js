@@ -1,5 +1,5 @@
-var request = require("request");
 var manager_control = require('../controllers/fogo_controllers').manager_control;
+var request = require("request");
 
 exports.increase_buffer = function(req, res, next){
   var id = req.params.id;

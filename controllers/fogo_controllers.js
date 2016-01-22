@@ -1,3 +1,4 @@
+var Control = require('../models/control');
 var shortid = require('shortid');
 var controls = [];
 var manager_control = [];
@@ -12,10 +13,22 @@ exports.index = function(req, res, next) {
 exports.create = function(req, res, next) {
   var mac = req.body.mac;
   var magic_id = shortid.generate();
-  var json = {mac : mac, magic_id: magic_id};
-  controls.push(json);
-  manager_control.push(json);
-  res.json(json);
+  // var control = {mac : mac, magic_id: magic_id};
+  var control = false;
+  for(var i in controls){
+    if(controls[i].mac == mac){
+      control = controls[i];
+    }
+  }
+  if(control){
+    res.json(control);
+  } else {
+    var control = new Control(mac, magic_id);
+    control.showData();
+    controls.push(control);
+    manager_control.push(control);
+    res.json(control);
+  }
 };
 
 exports.machines = function(req, res, next) {
@@ -43,13 +56,49 @@ exports.machines = function(req, res, next) {
 /* ========================= TO DO ============================ */
 
 exports.show = function(req, res, next) {
-  res.json({response: "ok"});
+  var magic_id = req.params.id;
+  var control = false;
+  for(var i in controls){
+    if(controls[i].magic_id == magic_id){
+      control = controls[i];
+    }
+  }
+  if(control){
+    res.json(control);
+  } else {
+    res.json({response: "Não foi possível encontrar o controle pelo id informado."});
+  }
 };
 exports.edit = function(req, res, next) {
-  res.json({response: "ok"});
+  var magic_id = req.params.id;
+  var mac = req.body.mac;
+  var new_mac = req.body.new_mac;
+  var control = false;
+  for(var i in controls){
+    if(controls[i].magic_id == magic_id && controls[i].mac == mac){
+      controls[i].mac = new_mac;
+      control = controls[i];
+    }
+  }
+  if(control){
+    res.json(control);
+  } else {
+    res.json({response: "Não foi possível encontrar o controle pelo id informado."});
+  }
 };
 exports.delete = function(req, res, next) {
-  res.json({response: "ok"});
+  var magic_id = req.params.id;
+  var control = false;
+  for(var i in controls){
+    if(controls[i].magic_id == magic_id){
+      control = controls.splice(i,1);
+    }
+  }
+  if(control){
+    res.json(control);
+  } else {
+    res.json({response: "Não foi possível encontrar o controle pelo id informado."});
+  }
 };
 
 exports.manager_control = manager_control;

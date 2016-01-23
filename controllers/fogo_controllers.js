@@ -67,6 +67,7 @@ exports.show = function(req, res, next) {
     res.json({response: "Não foi possível encontrar o controle pelo id informado."});
   }
 };
+
 exports.edit = function(req, res, next) {
   var magic_id = req.params.id;
   var mac = req.body.mac;
@@ -84,6 +85,7 @@ exports.edit = function(req, res, next) {
     res.json({response: "Não foi possível encontrar o controle pelo id informado."});
   }
 };
+
 exports.delete = function(req, res, next) {
   var magic_id = req.params.id;
   var control = false;

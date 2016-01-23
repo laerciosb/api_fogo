@@ -1,24 +1,5 @@
-// sending one by one
 {
 	"name" : "fogo-pc1",
 	"ip" : "192.168.0.1",
 	"mac" : "42:6F:B4:3D:EF:2B"
-},
-{
-  "name": "fogo-pc2",
-  "ip": "192.168.0.2",
-  "mac": "00:E0:4C:35:CB:C4"
-},
-{
-  "name": "fogo-pc3",
-  "ip": "192.168.0.3",
-  "mac": "00:E0:4C:30:71:A1"
-},
-{
-  "name": "fogo-pc4",
-  "ip": "192.168.0.4",
-  "mac": "00:E0:4C:02:1B:AB"
-},
-{
-  "mac" : "00:E0:4C:02:1B:AB"
 }

@@ -1,6 +1,6 @@
 {
 	"id" : "V18WrdmOx",
-	"machines" : [
+	"fogo_machines" : [
 		{
 			"name" : "fogo-pc1",
 			"ip" : "192.168.0.1",

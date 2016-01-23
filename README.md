@@ -18,4 +18,4 @@ Instalação em ambiente linux(terminal):
 * user@user:~/path_do_arquivo_clonado$ **npm start**
 
 Requisições para acesso:
-** Vide routes/index.js **
+**diretório routes**

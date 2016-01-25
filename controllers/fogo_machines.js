@@ -3,9 +3,9 @@ var shortid = require('shortid');
 var machines = [];
 
 exports.index = function(req, res, next) {
-  var fogo_machines = {fogo_machines: machines};
-  res.json(fogo_machines);
-  // res.sendFile('/tests/get_machines.json', {'root': '../api_fogo/public'});
+  // var fogo_machines = {fogo_machines: machines};
+  // res.json(fogo_machines);
+  res.sendFile('/tests/get_machines.json', {'root': '../api_fogo/public'});
 };
 
 exports.create = function(req, res, next) {

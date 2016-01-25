@@ -12,16 +12,16 @@ router
   /* LIST all fogo_machines. */
   .get('/', fogo_machines.index)
 
-  /* READ a machine. */
+  /* READ a fogo_machine. */
   .get('/:id', fogo_machines.show)
 
   /* CREATE a fogo_machine. */
   .post('/new', fogo_machines.create)
 
-  /* PUT a machine. */
+  /* PUT a fogo_machine. */
   .put('/:id', fogo_machines.edit)
 
-  /* DELETE a machine. */
+  /* DELETE a fogo_machine. */
   .delete('/:id', fogo_machines.delete)
 
 // END MACHINE CRUD.

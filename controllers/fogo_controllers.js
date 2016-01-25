@@ -31,9 +31,19 @@ exports.create = function(req, res, next) {
   }
 };
 
+exports.manager = function(req, res, next) {
+  var magic_id = req.params.id;
+  for (var i in manager_control) {
+    if (manager_control[i].magic_id == magic_id) {
+      response = manager_control[i];
+    }
+  }
+  res.json(manager_control);
+};
+
 exports.machines = function(req, res, next) {
-  var id = req.body.id;
-  var machines = req.body.machines;
+  var magic_id = req.body.magic_id;
+  var machines = req.body.fogo_machines;
   var response;
 
   var objects = [];
@@ -44,8 +54,8 @@ exports.machines = function(req, res, next) {
   }
 
   for (var i in manager_control) {
-    if (manager_control[i].magic_id == id) {
-      manager_control[i].machines = objects;
+    if (manager_control[i].magic_id == magic_id) {
+      manager_control[i].fogo_machines = objects;
       response = manager_control[i];
     }
   }

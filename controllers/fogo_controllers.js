@@ -1,8 +1,9 @@
 var Control = require('../models/control');
 var shortid = require('shortid');
+var request = require("request");
+var machines = require('../controllers/fogo_machines').machines;
 var controls = [];
 var manager_control = [];
-var machines = require('../controllers/fogo_machines').machines;
 
 exports.index = function(req, res, next) {
   var fogo_controls = {fogo_controls: controls};
@@ -26,41 +27,10 @@ exports.create = function(req, res, next) {
     var control = new Control(mac, magic_id);
     control.showData();
     controls.push(control);
-    manager_control.push(control);
+    var manager = new Control(mac, magic_id);
+    manager_control.push(manager);
     res.json(control);
   }
-};
-
-exports.manager = function(req, res, next) {
-  var magic_id = req.params.id;
-  for (var i in manager_control) {
-    if (manager_control[i].magic_id == magic_id) {
-      response = manager_control[i];
-    }
-  }
-  res.json(manager_control);
-};
-
-exports.machines = function(req, res, next) {
-  var magic_id = req.body.magic_id;
-  var machines = req.body.fogo_machines;
-  var response;
-
-  var objects = [];
-  for (var i in machines) {
-    if (machines[i].checked) {
-      objects.push(machines[i]);
-    }
-  }
-
-  for (var i in manager_control) {
-    if (manager_control[i].magic_id == magic_id) {
-      manager_control[i].fogo_machines = objects;
-      response = manager_control[i];
-    }
-  }
-
-  res.json(response);
 };
 
 exports.show = function(req, res, next) {
@@ -111,4 +81,116 @@ exports.delete = function(req, res, next) {
   }
 };
 
-exports.manager_control = manager_control;
+exports.machines = function(req, res, next) {
+  var magic_id = req.params.id;
+  for (var i in manager_control) {
+    if (manager_control[i].magic_id == magic_id) {
+      response = manager_control[i];
+    }
+  }
+  res.json(manager_control);
+};
+
+exports.new_machine = function(req, res, next) {
+  var magic_id = req.params.id;
+  var machines = req.body.fogo_machines;
+  var response;
+
+  var objects = [];
+  for (var i in machines) {
+    if (machines[i].checked) {
+      objects.push(machines[i]);
+    }
+  }
+
+  for (var i in manager_control) {
+    if (manager_control[i].magic_id == magic_id) {
+      manager_control[i].fogo_machines = objects;
+      response = manager_control[i];
+    }
+  }
+
+  res.json(response);
+};
+
+exports.increase_buffer = function(req, res, next){
+  var magic_id = req.params.id;
+
+  for (var i in manager_control) {
+    if (manager_control[i].magic_id == magic_id) {
+      for (var j in manager_control[i].fogo_machines){
+        var ip = manager_control[i].fogo_machines[j].ip;
+        //Load the request module and send information to fogo machines.
+        request({
+          uri: "http://" + ip + ":8888/increase_buffer",
+          method: "GET",
+          headers: {
+            'Content-type' : 'application/json'
+          }
+        }, function(error, response, body) {
+          if(error){
+            console.log({error: error});
+          }
+        });
+        // console.log("device[" + j + "]: " + JSON.stringify(manager_control[i].fogo_machines[j]));
+      }
+    }
+  }
+
+  res.json({response: "increase_buffer_ok"});
+};
+
+exports.run_decoder = function(req, res, next){
+  var magic_id = req.params.id;
+
+  for (var i in manager_control) {
+    if (manager_control[i].magic_id == magic_id) {
+      for (var j in manager_control[i].fogo_machines){
+        var ip = manager_control[i].fogo_machines[j].ip;
+        //Load the request module and send information to fogo machines.
+        request({
+          uri: "http://" + ip + ":8888/run_decoder",
+          method: "GET",
+          headers: {
+            'Content-type' : 'application/json'
+          }
+        }, function(error, response, body) {
+          if(error){
+            console.log({error: error});
+          }
+        });
+        // console.log("device[" + j + "]: " + JSON.stringify(manager_control[i].fogo_machines[j]));
+      }
+    }
+  }
+
+  res.json({response: "run_decoder_ok"});
+};
+
+exports.sender = function(req, res, next){
+  var magic_id = req.params.id;
+  var address = req.body.address;
+  var json = {address: address};
+
+  for (var i in manager_control) {
+    if (manager_control[i].magic_id == magic_id) {
+      for (var j in manager_control[i].fogo_machines){
+        var ip = manager_control[i].fogo_machines[j].ip;
+        //Load the request module and send information to fogo machines.
+        request({
+          uri: "http://" + ip + ":8888/sender",
+          method: "GET",
+          headers: {
+            'Content-type' : 'application/json'
+          }
+        }, function(error, response, body) {
+          if(error){
+            console.log({error: error});
+          }
+        });
+        // console.log("device[" + j + "]: " + JSON.stringify(manager_control[i].fogo_machines[j]));
+      }
+    }
+  }
+  res.json(json);
+};

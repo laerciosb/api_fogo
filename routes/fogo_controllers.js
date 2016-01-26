@@ -29,10 +29,19 @@ router
 // BEGIN CONTROLLER ACTIONS.
 
   /* READ fogo_controller and show your data machines. */
-  .get('/machines/:id', fogo_controllers.manager)
+  .get('/:id/machines', fogo_controllers.machines)
 
   /* SENDING fogo control data to inform the chosen machines. */
-  .post('/machines', fogo_controllers.machines)
+  .post('/:id/machines/new', fogo_controllers.new_machine)
+
+    /* INCREASE BUFFER with default value in all fogo_machines. */
+  .get('/:id/increase_buffer', fogo_controllers.increase_buffer)
+
+  /* RUN DECODER in all fogo_machines. */
+  .get('/:id/run_decoder', fogo_controllers.run_decoder)
+
+  /* SENDER in all fogo_machines. */
+  .post('/:id/sender', fogo_controllers.sender)
 
 // END CONTROLLER ACTIONS.
 

@@ -35,16 +35,16 @@ router
   .post('/:id/machines/new', fogo_controllers.new_machine)
 
   /* RUN PTP in all fogo_machines. */
-  .get('/:id/run_ptp', fogo_controllers.run_ptp)
+  .get('/:id/run_ptp/:status', fogo_controllers.run_ptp)
 
   /* INCREASE BUFFER with default value in all fogo_machines. */
-  .get('/:id/increase_buffer', fogo_controllers.increase_buffer)
+  .get('/:id/increase_buffer/:status', fogo_controllers.increase_buffer)
 
   /* RUN DECODER in all fogo_machines. */
-  .get('/:id/run_decoder', fogo_controllers.run_decoder)
+  .get('/:id/run_decoder/:status', fogo_controllers.run_decoder)
 
   /* SENDER in all fogo_machines. */
-  .post('/:id/sender', fogo_controllers.sender)
+  .post('/:id/sender/:status', fogo_controllers.sender)
 
 // END CONTROLLER ACTIONS.
 

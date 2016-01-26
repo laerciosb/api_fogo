@@ -115,14 +115,17 @@ exports.new_machine = function(req, res, next) {
 
 exports.run_ptp = function(req, res, next){
   var magic_id = req.params.id;
+  var status = req.params.status;
+  var url = {url: "false"};
 
   for (var i in manager_control) {
     if (manager_control[i].magic_id == magic_id) {
       for (var j in manager_control[i].fogo_machines){
         var ip = manager_control[i].fogo_machines[j].ip;
+        url = "http://" + ip + ":8888/run_ptp/" + status;
         //Load the request module and send information to fogo machines.
         request({
-          uri: "http://" + ip + ":8888/run_ptp",
+          uri: url,
           method: "GET",
           headers: {
             'Content-type' : 'application/json'
@@ -132,24 +135,27 @@ exports.run_ptp = function(req, res, next){
             console.log({error: error});
           }
         });
-        // console.log("device[" + j + "]: " + JSON.stringify(manager_control[i].fogo_machines[j]));
+        // // console.log("device[" + j + "]: " + JSON.stringify(manager_control[i].fogo_machines[j]));
       }
     }
   }
 
-  res.json({response: "run_ptp_ok"});
+  res.json({url: url});
 };
 
 exports.increase_buffer = function(req, res, next){
   var magic_id = req.params.id;
+  var status = req.params.status;
+  var url = {url: "false"};
 
   for (var i in manager_control) {
     if (manager_control[i].magic_id == magic_id) {
       for (var j in manager_control[i].fogo_machines){
         var ip = manager_control[i].fogo_machines[j].ip;
+        url = "http://" + ip + ":8888/increase_buffer/" + status;
         //Load the request module and send information to fogo machines.
         request({
-          uri: "http://" + ip + ":8888/increase_buffer",
+          uri: url,
           method: "GET",
           headers: {
             'Content-type' : 'application/json'
@@ -159,24 +165,27 @@ exports.increase_buffer = function(req, res, next){
             console.log({error: error});
           }
         });
-        // console.log("device[" + j + "]: " + JSON.stringify(manager_control[i].fogo_machines[j]));
+        // // console.log("device[" + j + "]: " + JSON.stringify(manager_control[i].fogo_machines[j]));
       }
     }
   }
 
-  res.json({response: "increase_buffer_ok"});
+  res.json({url: url});
 };
 
 exports.run_decoder = function(req, res, next){
   var magic_id = req.params.id;
+  var status = req.params.status;
+  var url = {url: "false"};
 
   for (var i in manager_control) {
     if (manager_control[i].magic_id == magic_id) {
       for (var j in manager_control[i].fogo_machines){
         var ip = manager_control[i].fogo_machines[j].ip;
+        url = "http://" + ip + ":8888/run_decoder/" + status;
         //Load the request module and send information to fogo machines.
         request({
-          uri: "http://" + ip + ":8888/run_decoder",
+          uri: url,
           method: "GET",
           headers: {
             'Content-type' : 'application/json'
@@ -186,26 +195,29 @@ exports.run_decoder = function(req, res, next){
             console.log({error: error});
           }
         });
-        // console.log("device[" + j + "]: " + JSON.stringify(manager_control[i].fogo_machines[j]));
+        // // console.log("device[" + j + "]: " + JSON.stringify(manager_control[i].fogo_machines[j]));
       }
     }
   }
 
-  res.json({response: "run_decoder_ok"});
+  res.json({url: url});
 };
 
 exports.sender = function(req, res, next){
   var magic_id = req.params.id;
+  var status = req.params.status;
   var address = req.body.address;
   var json = {address: address};
+  var url = {url: "false"};
 
   for (var i in manager_control) {
     if (manager_control[i].magic_id == magic_id) {
       for (var j in manager_control[i].fogo_machines){
         var ip = manager_control[i].fogo_machines[j].ip;
+        url = "http://" + ip + ":8888/sender/" + status;
         //Load the request module and send information to fogo machines.
         request({
-          uri: "http://" + ip + ":8888/sender",
+          uri: url,
           method: "GET",
           headers: {
             'Content-type' : 'application/json'
@@ -215,9 +227,9 @@ exports.sender = function(req, res, next){
             console.log({error: error});
           }
         });
-        // console.log("device[" + j + "]: " + JSON.stringify(manager_control[i].fogo_machines[j]));
+        // // console.log("device[" + j + "]: " + JSON.stringify(manager_control[i].fogo_machines[j]));
       }
     }
   }
-  res.json(json);
+  res.json({url: url});
 };

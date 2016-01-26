@@ -28,7 +28,7 @@ Esta API REST possibilita a comunicação atraves de requisições web para cont
 |   Get machines of a fogo_controller               |  `GET`    | /fogo_controllers/:magic_id/machines
 |   New machine of a fogo_controller                |  `POST`   | /fogo_controllers/:magic_id/machines/new
 |   Add increase_buffer at machines                 |  `GET`    | /fogo_controllers/:magic_id/increase_buffer
-|   Run ptp at machines of a  fogo_controller       |  `GET`    | /fogo_controllers/:magic_id/run_ptp
+|   Run ptp at machines of a fogo_controller        |  `GET`    | /fogo_controllers/:magic_id/run_ptp
 |   Run decoder at machines of a fogo_controller    |  `GET`    | /fogo_controllers/:magic_id/run_decoder
 |   Set machine sender                              |  `POST`   | /fogo_controllers/:magic_id/sender
 |   List fogo_machines                              |  `GET`    | /fogo_machines
@@ -163,3 +163,18 @@ POST /fogo_controllers/23TplPdS/machines/new
 ```
 
 Uma vez que a resposta da API para a inclusão das máquinas a serem controladas foi recebida com sucesso, podemos realizar as solicitações para as máquinas executarem os comandos como run_ptp, run_decoder, increase_buffer, entre outros.
+
+### Run ptp at machines of a fogo_controller ###
+
+Para realizar a solicitação run_ptp, é necessário enviar o "status" ao fim da URL. "on" para ligar e "off" para desligar.
+
+* REQUEST
+```
+GET /fogo_controllers/23TplPdS/run_ptp/on
+```
+* RESPONSE
+```json
+{
+  "url": "http://fogo_machine_ip:fogo_machine_port/run_ptp/on"
+}
+```

@@ -49,15 +49,13 @@ Para criar um fogo_controller é necessário enviar um JSON com seu endereço ma
 ```
 POST /fogo_controllers/new
 ```
-```
-#!json
+```json
 {
   "mac": "00:E0:4C:35:CB:C4"
 }
 ```
 * RESPONSE
-```
-#!json
+```json
 {
   "mac": "00:E0:4C:35:CB:C4",
   "magic_id": "23TplPdS"
@@ -73,8 +71,7 @@ POST /fogo_controllers/new
 GET /fogo_controllers
 ```
 * RESPONSE
-```
-#!json
+```json
 {
   "fogo_controllers": [
     {
@@ -98,8 +95,7 @@ Para saber informações específicas referente a um fogo_controller informando 
 GET /fogo_controllers/23TplPdS
 ```
 * RESPONSE
-```
-#!json
+```json
 {
   "mac": "00:E0:4C:35:CB:C4",
   "magic_id": "23TplPdS"
@@ -114,8 +110,7 @@ Após adicionar pelo menos uma fogo_machine (fogo-PC :computer:) e um fogo_contr
 ```
 POST /fogo_controllers/23TplPdS/machines/new
 ```
-```
-#!json
+```json
 {
   "fogo_machines" : [
     {
@@ -143,8 +138,7 @@ POST /fogo_controllers/23TplPdS/machines/new
 }
 ```
 * RESPONSE
-```
-#!json
+```json
 {
   "mac": "00:E0:4C:35:CB:C4",
   "magic_id": "23TplPdS",

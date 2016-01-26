@@ -18,23 +18,24 @@ Esta API REST possibilita a comunicação atraves de requisições web para cont
 
 ## Rotas ##
 
-|   Action                          | Method    | URL                                               
-| ----------------------------------|-----------|--------------------------------------------------------------- 
-|   List fogo_controllers           |  `GET`    | /fogo_controllers
-|   Get fogo_controller             |  `GET`    | /fogo_controllers/:magic_id
-|   New fogo_controller             |  `POST`   | /fogo_controllers/new
-|   Edit fogo_controller            |  `PUT`    | /fogo_controllers/:magic_id
-|   Delete fogo_controller          |  `DELETE` | /fogo_controllers/:magic_id
-|   Get machines by fogo_controller |  `GET`    | /fogo_controllers/:magic_id/machines
-|   New machine by fogo_controller  |  `POST`   | /fogo_controllers/:magic_id/machines/new
-|   Add increase_buffer at machines |  `GET`    | /fogo_controllers/:magic_id/increase_buffer
-|   Add run_decoder at machines     |  `GET`    | /fogo_controllers/:magic_id/run_decoder
-|   Set machine sender              |  `POST`   | /fogo_controllers/:magic_id/sender
-|   List fogo_machines              |  `GET`    | /fogo_machines
-|   Get fogo_machine                |  `GET`    | /fogo_machines/:magic_id
-|   New fogo_machine                |  `POST`   | /fogo_machines/new
-|   Edit fogo_machine               |  `PUT`    | /fogo_machines/:magic_id
-|   Delete fogo_machine             |  `DELETE` | /fogo_machines/:magic_id
+|   Action                                          | Method    | URL                                               
+| --------------------------------------------------|-----------|----------------------------------------------------- 
+|   List fogo_controllers                           |  `GET`    | /fogo_controllers
+|   Get fogo_controller                             |  `GET`    | /fogo_controllers/:magic_id
+|   New fogo_controller                             |  `POST`   | /fogo_controllers/new
+|   Edit fogo_controller                            |  `PUT`    | /fogo_controllers/:magic_id
+|   Delete fogo_controller                          |  `DELETE` | /fogo_controllers/:magic_id
+|   Get machines of a fogo_controller               |  `GET`    | /fogo_controllers/:magic_id/machines
+|   New machine of a fogo_controller                |  `POST`   | /fogo_controllers/:magic_id/machines/new
+|   Add increase_buffer at machines                 |  `GET`    | /fogo_controllers/:magic_id/increase_buffer
+|   Run ptp at machines of a  fogo_controller       |  `GET`    | /fogo_controllers/:magic_id/run_ptp
+|   Run decoder at machines of a fogo_controller    |  `GET`    | /fogo_controllers/:magic_id/run_decoder
+|   Set machine sender                              |  `POST`   | /fogo_controllers/:magic_id/sender
+|   List fogo_machines                              |  `GET`    | /fogo_machines
+|   Get fogo_machine                                |  `GET`    | /fogo_machines/:magic_id
+|   New fogo_machine                                |  `POST`   | /fogo_machines/new
+|   Edit fogo_machine                               |  `PUT`    | /fogo_machines/:magic_id
+|   Delete fogo_machine                             |  `DELETE` | /fogo_machines/:magic_id
 
 
 ## Métodos ##
@@ -161,4 +162,4 @@ POST /fogo_controllers/23TplPdS/machines/new
 }
 ```
 
-Uma vez que a resposta da API para a inclusão das máquinas a serem controladas foi recebida com sucesso, podemos realizar as solicitações para as máquinas executarem os comandos, como run_decoder, increase_buffer, entre outros.
+Uma vez que a resposta da API para a inclusão das máquinas a serem controladas foi recebida com sucesso, podemos realizar as solicitações para as máquinas executarem os comandos como run_ptp, run_decoder, increase_buffer, entre outros.

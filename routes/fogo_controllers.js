@@ -34,7 +34,10 @@ router
   /* SENDING fogo control data to inform the chosen machines. */
   .post('/:id/machines/new', fogo_controllers.new_machine)
 
-    /* INCREASE BUFFER with default value in all fogo_machines. */
+  /* RUN PTP in all fogo_machines. */
+  .get('/:id/run_ptp', fogo_controllers.run_ptp)
+
+  /* INCREASE BUFFER with default value in all fogo_machines. */
   .get('/:id/increase_buffer', fogo_controllers.increase_buffer)
 
   /* RUN DECODER in all fogo_machines. */

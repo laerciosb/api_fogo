@@ -113,6 +113,33 @@ exports.new_machine = function(req, res, next) {
   res.json(response);
 };
 
+exports.run_ptp = function(req, res, next){
+  var magic_id = req.params.id;
+
+  for (var i in manager_control) {
+    if (manager_control[i].magic_id == magic_id) {
+      for (var j in manager_control[i].fogo_machines){
+        var ip = manager_control[i].fogo_machines[j].ip;
+        //Load the request module and send information to fogo machines.
+        request({
+          uri: "http://" + ip + ":8888/run_ptp",
+          method: "GET",
+          headers: {
+            'Content-type' : 'application/json'
+          }
+        }, function(error, response, body) {
+          if(error){
+            console.log({error: error});
+          }
+        });
+        // console.log("device[" + j + "]: " + JSON.stringify(manager_control[i].fogo_machines[j]));
+      }
+    }
+  }
+
+  res.json({response: "run_ptp_ok"});
+};
+
 exports.increase_buffer = function(req, res, next){
   var magic_id = req.params.id;
 

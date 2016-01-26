@@ -1,17 +1,17 @@
-# API_fogoPlayer
+# :computer: API_fogoPlayer :fire:
 
-Esta API REST possibilita a comunicação atraves de requisições web para controle e manipulação de ações do fogoPlayer. Sendo assim, é possível criar controles para manipular máquinas que possuem o fogoPlayer instalado, disponibilizando opções como selecionar máquinas, rodar o decoder, aumentar o buffer, dentre outras.
+Esta API REST possibilita a comunicação atraves de requisições web para controle e manipulação de ações do fogoPlayer :fire:. Sendo assim, é possível criar controles para manipular máquinas que possuem o fogoPlayer :fire: instalado, disponibilizando opções como selecionar máquinas, rodar o decoder, aumentar o buffer, dentre outras.
 
 ### Necessário: ###
 
-* [Node.js 4.1.1](https://nodejs.org/en/):+1:
-* [Express.js 4.13.1](http://expressjs.com/pt-br/):+1:
+* **[Node.js 4.1.1](https://nodejs.org/en/)** :white_check_mark:
+* **[Express.js 4.13.1](http://expressjs.com/pt-br/)** :white_check_mark:
 
 ### Instalação em ambiente linux(terminal): ###
 
 1. Após o clone da aplicação, execute o seguinte comando para instalar as dependências:
   - user@user:~/path_do_arquivo_clonado$ **npm install**
-  - **OBS: Instalar manualmente as dependências que não forem instaladas pelo comando acima.**
+  - **OBS: Instalar manualmente as dependências que não forem instaladas pelo comando acima.** :white_check_mark:
 
 2. Start no servidor e acesso pelo browser
   - user@user:~/path_do_arquivo_clonado$ **npm start**
@@ -39,7 +39,7 @@ Esta API REST possibilita a comunicação atraves de requisições web para cont
 
 ## Métodos ##
 
-Para começar a controlar as máquinas do fogoPlayer é necessário criar pelo menos um fogo_controller(controle) e uma fogo_machine(fogo-PC).
+Para começar a controlar as máquinas do fogoPlayer é necessário criar pelo menos um fogo_controller(controle) e uma fogo_machine(fogo-PC :computer:).
 
 ### New fogo_controller ###
 
@@ -108,7 +108,7 @@ GET /fogo_controllers/23TplPdS
 
 ### New machine by fogo_controller ###
 
-Após adicionar pelo menos uma fogo_machine(fogo-PC) e um fogo_controller(Controle) poderá adicionar ao controle os fogo-PC disponíveis(Estes podem ser listados na seção list fogo_machines). A API entenderá que os items selecionados(fogo-PC) foram aqueles que possuírem a chave "checked" com valor "true".
+Após adicionar pelo menos uma fogo_machine (fogo-PC :computer:) e um fogo_controller (Controle) poderá adicionar ao controle os fogo-PC  disponíveis (Estes podem ser listados na seção list fogo_machines). A API entenderá que os items selecionados(fogo-PC :computer:) foram aqueles que possuírem a chave "checked" com valor "true".
 
 * REQUEST
 ```

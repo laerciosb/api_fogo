@@ -1,6 +1,6 @@
-# :computer: API_fogoPlayer :fire:
+# API_fogoPlayer
 
-Esta API REST possibilita a comunicação atraves de requisições web para controle e manipulação de ações do fogoPlayer :fire:. Sendo assim, é possível criar controles para manipular máquinas que possuem o fogoPlayer :fire: instalado, disponibilizando opções como selecionar máquinas, rodar o decoder, aumentar o buffer, dentre outras.
+Esta API REST possibilita a comunicação atraves de requisições web para controle e manipulação de ações do fogoPlayer. Sendo assim, é possível criar controles para manipular máquinas que possuem o fogoPlayer instalado, disponibilizando opções como selecionar máquinas, rodar o decoder, aumentar o buffer, dentre outras.
 
 ### Necessário: ###
 
@@ -39,7 +39,7 @@ Esta API REST possibilita a comunicação atraves de requisições web para cont
 
 ## Métodos ##
 
-Para começar a controlar as máquinas do fogoPlayer é necessário criar pelo menos um fogo_controller(controle) e uma fogo_machine(fogo-PC :computer:).
+Para começar a controlar as máquinas do fogoPlayer é necessário criar pelo menos um fogo_controller(controle) e uma fogo_machine(fogo-PC).
 
 ### New fogo_controller ###
 
@@ -104,7 +104,7 @@ GET /fogo_controllers/23TplPdS
 
 ### New machine by fogo_controller ###
 
-Após adicionar pelo menos uma fogo_machine (fogo-PC :computer:) e um fogo_controller (Controle) poderá adicionar ao controle os fogo-PC  disponíveis (Estes podem ser listados na seção list fogo_machines). A API entenderá que os items selecionados(fogo-PC :computer:) foram aqueles que possuírem a chave "checked" com valor "true".
+Após adicionar pelo menos uma fogo_machine (fogo-PC) e um fogo_controller (Controle) poderá adicionar ao controle os fogo-PC  disponíveis (Estes podem ser listados na seção list fogo_machines). A API entenderá que os items selecionados(fogo-PC) foram aqueles que possuírem a chave "checked" com valor "true".
 
 * REQUEST
 ```

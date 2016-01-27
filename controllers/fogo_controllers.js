@@ -6,8 +6,8 @@ var controls = [];
 var manager_control = [];
 
 exports.index = function(req, res, next) {
-  var fogo_controls = {fogo_controls: controls};
-  res.json(fogo_controls);
+  var fogo_controllers = {fogo_controllers: controls};
+  res.json(fogo_controllers);
   // res.sendFile('/tests/get_machines.json', {'root': '../api_fogo/public'});
 }
 

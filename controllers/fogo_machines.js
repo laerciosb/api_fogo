@@ -15,11 +15,13 @@ exports.create = function(req, res, next) {
   var magic_id = shortid.generate();
   // var machine = {name: name, ip: ip, mac: mac, magic_id: magic_id, checked: false};
   var machine = false;
+
   for(var i in machines){
     if(machines[i].mac == mac){
       machine = machines[i];
     }
   }
+
   if(machine){
     res.json(machine);
   } else {
@@ -33,11 +35,13 @@ exports.create = function(req, res, next) {
 exports.show = function(req, res, next) {
   var magic_id = req.params.id;
   var machine = false;
+
   for(var i in machines){
     if(machines[i].magic_id == magic_id){
       machine = machines[i];
     }
   }
+
   if(machine){
     res.json(machine);
   } else {
@@ -52,6 +56,7 @@ exports.edit = function(req, res, next) {
   var new_ip = req.body.new_ip;
   var new_mac = req.body.new_mac;
   var machine = false;
+
   for(var i in machines){
     if(machines[i].magic_id == magic_id && machines[i].mac == mac){
       machines[i].name = new_name;
@@ -60,6 +65,7 @@ exports.edit = function(req, res, next) {
       machine = machines[i];
     }
   }
+
   if(machine){
     res.json(machine);
   } else {
@@ -70,11 +76,13 @@ exports.edit = function(req, res, next) {
 exports.delete = function(req, res, next) {
   var magic_id = req.params.id;
   var machine = false;
+
   for(var i in machines){
     if(machines[i].magic_id == magic_id){
       machine = machines.splice(i,1);
     }
   }
+  
   if(machine){
     res.json(machine);
   } else {

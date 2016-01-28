@@ -93,7 +93,7 @@ Para saber informações específicas referente a um fogo_controller informando 
 
 * REQUEST
 ```
-GET /fogo_controllers/23TplPdS
+GET /fogo_controllers/:magic_id
 ```
 * RESPONSE
 ```json
@@ -109,7 +109,7 @@ Após adicionar pelo menos uma fogo_machine (fogo-PC) e um fogo_controller (Cont
 
 * REQUEST
 ```
-POST /fogo_controllers/23TplPdS/machines/new
+POST /fogo_controllers/:magic_id/machines/new
 ```
 ```json
 {
@@ -170,7 +170,7 @@ Para realizar a solicitação run_ptp, é necessário enviar o "status" ao fim d
 
 * REQUEST
 ```
-GET /fogo_controllers/23TplPdS/run_ptp/on
+GET /fogo_controllers/:magic_id/run_ptp/on
 ```
 * RESPONSE
 ```json

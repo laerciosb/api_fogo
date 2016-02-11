@@ -334,6 +334,7 @@ GET /fogo_controllers/:magic_id/increase_buffer/:status
 {
   "url": "http://fogo_machine_ip:fogo_machine_port/increase_buffer/on"
 }
+```
 
 ### Run ptp at machines of a fogo_controller ###
 
@@ -348,6 +349,7 @@ GET /fogo_controllers/:magic_id/run_ptp/:status
 {
   "url": "http://fogo_machine_ip:fogo_machine_port/run_ptp/off"
 }
+```
 
 ### Run decoder at machines of a fogo_controller ###
 
@@ -362,6 +364,7 @@ GET /fogo_controllers/:magic_id/run_decoder/:status
 {
   "url": "http://fogo_machine_ip:fogo_machine_port/run_decoder/off"
 }
+```
 
 ### Set machine sender ###
 
@@ -381,3 +384,4 @@ POST /fogo_controllers/:magic_id/sender/:status
 {
   "url": "http://fogo_machine_ip:fogo_machine_port/sender/on"
 }
+```

@@ -317,6 +317,7 @@ GET /fogo_controllers/:magic_id/machines
     }
   ]
 }
+```
 
 Uma vez que a resposta da API para a inclusão das máquinas a serem controladas foi recebida com sucesso, podemos realizar as solicitações para as máquinas executarem os comandos como run_ptp, run_decoder, increase_buffer, entre outros.
 

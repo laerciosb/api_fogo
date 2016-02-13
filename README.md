@@ -1,6 +1,6 @@
-# API_fogoPlayer
+# API Restful para controle do fogoPlayer
 
-Esta API REST possibilita a comunicação atraves de requisições web para controle e manipulação de ações do fogoPlayer. Sendo assim, é possível criar controles para manipular máquinas que possuem o fogoPlayer instalado, disponibilizando opções como selecionar máquinas, rodar o decoder, aumentar o buffer, dentre outras.
+Com o intuito de automatizar a execução do fogoPlayer, houve a necessidade de se criar uma API de comunicação que age como mediador entre a aplicação mobile e as máquinas que rodam o fogoPlayer. A API utiliza recursos REST para realizar o CRUD(Create, Read, Update e Delete) dos objetos instanciados durante seu procedimento e o corpo de suas mensagens encontra-se no formato JSON. Através desta, é possível gerenciar um fogo_controller para que este consiga controlar todas as fogo_machines que desejar e utilizar comandos como run_decoder, run_ptp, dentre outros, que são comandos obrigatórios em qualquer fogo_machine para a execução do fogoPlayer na mesma.
 
 ### Necessário: ###
 
@@ -15,6 +15,13 @@ Esta API REST possibilita a comunicação atraves de requisições web para cont
 
 2. Start no servidor e acesso pelo browser
   - user@user:~/path_do_arquivo_clonado$ **npm start**
+  - Acesse no navegador http://seu_ip:3000
+
+## Ciclo de vida da aplicação ##
+
+1. A aplicação android (fogo_controller) para controle do fogoPlayer realiza uma requisição para se cadastrar na API usando o endereço MAC do dispositivo e recebe um token chamado magic_id, este token será usado na API para identificar o dispositivo. O mesmo processo é realizado por parte da máquina que está rodando o fogoPlayer (fogo_machine).
+2. Uma vez cadastrado o fogo_controller pode enviar as solicitações de comandos que desejar e o mesmo será enviado e executado nas fogo_machines. As informações específicas sobre os recursos estão a seguir.
+
 
 ## Rotas ##
 
@@ -385,3 +392,11 @@ POST /fogo_controllers/:magic_id/sender/:status
   "url": "http://fogo_machine_ip:fogo_machine_port/sender/on"
 }
 ```
+
+## Observações ##
+
+A API não está totalmente completa então é possível que no decorrer do desenvolvimento do fogoPlayer ocorra alterações constantes, seja correção, adição ou qualquer mudança de código que a equipe LAViD ache pertinente.
+
+
+
+Created By **[LAViD Developers UFPB](http://lavid.ufpb.br)**

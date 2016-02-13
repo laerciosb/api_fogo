@@ -2,12 +2,14 @@
 
 Com o intuito de automatizar a execução do fogoPlayer, houve a necessidade de se criar uma API de comunicação que age como mediador entre a aplicação mobile e as máquinas que rodam o fogoPlayer. A API utiliza recursos REST para realizar o CRUD(Create, Read, Update e Delete) dos objetos instanciados durante seu procedimento e o corpo de suas mensagens encontra-se no formato JSON. Através desta, é possível gerenciar um fogo_controller para que este consiga controlar todas as fogo_machines que desejar e utilizar comandos como run_decoder, run_ptp, dentre outros, que são comandos obrigatórios em qualquer fogo_machine para a execução do fogoPlayer na mesma.
 
-### Necessário: ###
+### Requisitos ###
 
 * **[Node.js 4.1.1](https://nodejs.org/en/)** :white_check_mark:
 * **[Express.js 4.13.1](http://expressjs.com/pt-br/)** :white_check_mark:
 
-### Instalação em ambiente linux(terminal): ###
+### Instalação ###
+
+**Obs.: As instruções abaixo foram testadas na distribuição Ubuntu, Windows 10 e OS X El Capitan.**
 
 1. Após o clone da aplicação, execute o seguinte comando para instalar as dependências:
   - user@user:~/path_do_arquivo_clonado$ **npm install**
